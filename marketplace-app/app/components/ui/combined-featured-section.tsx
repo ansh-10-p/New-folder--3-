@@ -44,7 +44,7 @@ export default function CombinedFeaturedSection() {
         {/* ✅ 2. FEATURED CASE STUDY BLOCK - Top Right */}
         <div className="flex flex-col justify-between gap-4 p-6 rounded-none border border-gray-200 dark:border-gray-800 bg-card">
           <div>
-            <span className="text-xs flex items-center gap-2 text-sm text-gray-500">
+            <span className="text-sm flex items-center gap-2 text-gray-500">
               <GalleryVerticalEnd className="w-4 h-4" /> {featuredCasestudy.tags}
             </span>
             <h3 className="text-xl font-normal text-gray-900 dark:text-white">
@@ -96,7 +96,7 @@ function FeatureCard({ icon, title, subtitle, description }: { icon: React.React
     <div className="relative flex flex-col gap-3 p-4 border border-gray-200 dark:border-gray-800 bg-background transition">
       <div className="flex items-center gap-4">
         <div>
-          <span className="text-xs flex items-center gap-2 text-sm text-gray-500 mb-4">
+          <span className="text-sm flex items-center gap-2 text-gray-500 mb-4">
             {icon}
             {title}
           </span>

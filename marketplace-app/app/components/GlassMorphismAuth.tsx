@@ -107,25 +107,24 @@ export default function GlassMorphismAuth({ mode, onSubmit }: GlassMorphismAuthP
           </div>
 
           {/* OAuth Button */}
-          <div className="mt-8">
+          <div className="mt-8 flex gap-3 items-center justify-center">
+            <Button_v4
+              type="button"
+              size="icon"
+              className="rounded-full h-12 w-12 flex-shrink-0"
+              title="Sign in with Google"
+            >
+              <GoogleIcon className="size-6" />
+            </Button_v4>
+            <div className="flex-1 h-px bg-gradient-to-r from-transparent via-neutral-400 to-transparent"></div>
             <Button_v4
               type="button"
               className="w-full"
             >
-              <GoogleIcon className="size-6 mr-2" />
               <span>
-                {isSignUp ? 'Sign up with Google' : 'Sign in with Google'}
+                {isSignUp ? 'Sign up with Email' : 'Sign in with Email'}
               </span>
             </Button_v4>
-
-            {/* Divider */}
-            <div className="relative py-3">
-              <div className="relative flex justify-center">
-                <span className="before:-translate-y-1/2 after:-translate-y-1/2 px-2 text-neutral-500 text-sm before:absolute before:top-1/2 before:left-0 before:h-px before:w-4/12 after:absolute after:top-1/2 after:right-0 after:h-px after:w-4/12 before:bg-neutral-300 after:bg-neutral-300">
-                  Or continue with email
-                </span>
-              </div>
-            </div>
           </div>
 
           {/* Form */}

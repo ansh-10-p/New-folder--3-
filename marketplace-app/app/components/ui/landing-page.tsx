@@ -19,11 +19,17 @@ import {
   Code,
   LineChart,
   MessageSquare,
+  Trophy,
+  Briefcase,
+  Lightbulb,
+  Zap as ZapIcon,
+  Star,
 } from "lucide-react"
 import { FaInstagram, FaTwitter, FaLinkedin, FaFacebook, FaGithub } from "react-icons/fa"
 import { Button_v4 } from "@/components/Button_v4"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
+import { Marquee } from "@/components/Marquee"
 
 // Animation variants
 const fadeIn = {
@@ -258,7 +264,7 @@ export function DesignAgency() {
           </div>
         </section>
 
-        {/* Client Logos */}
+        {/* Client Logos - Marquee with Icons */}
         <section id="clients" className="w-full py-12 md:py-16 lg:py-20">
           <motion.div
             initial="hidden"
@@ -295,32 +301,31 @@ export function DesignAgency() {
                 </motion.p>
               </div>
             </div>
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="mx-auto grid grid-cols-2 items-center gap-3 py-8 md:grid-cols-3 lg:grid-cols-6"
-            >
-              {[...Array(6)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  variants={itemFadeIn}
-                  whileHover={{ scale: 1.05 }}
-                  className="flex items-center justify-center"
-                >
-                  <div className="rounded-3xl border p-6 bg-background/80 hover:shadow-md transition-all">
-                    <Image
-                      src={`https://images.unsplash.com/photo-${1550355499302 + i}-?w=160&h=80&fit=crop`}
-                      alt={`Client Logo ${i + 1}`}
-                      width={160}
-                      height={80}
-                      className="grayscale transition-all hover:grayscale-0"
-                    />
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
+            <Marquee speed={30} pauseOnHover>
+              <div className="flex items-center gap-12 px-4">
+                {[
+                  { icon: Trophy, label: "TechCorp" },
+                  { icon: Briefcase, label: "InnovateLabs" },
+                  { icon: Lightbulb, label: "CreativeFlow" },
+                  { icon: Star, label: "VentureCo" },
+                  { icon: ZapIcon, label: "SpeedTech" },
+                  { icon: Code, label: "DevStudio" },
+                ].map((item, i) => (
+                  <motion.div
+                    key={i}
+                    whileHover={{ scale: 1.1 }}
+                    className="flex flex-col items-center gap-2 min-w-max"
+                  >
+                    <div className="rounded-full border-2 border-muted-foreground/20 p-4 hover:border-primary/50 transition-colors">
+                      <item.icon className="h-8 w-8 text-muted-foreground hover:text-primary transition-colors" />
+                    </div>
+                    <p className="text-xs font-semibold text-muted-foreground hidden sm:block">
+                      {item.label}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </Marquee>
           </motion.div>
         </section>
 

@@ -109,30 +109,44 @@ export default function AuthModal({ isOpen = true, onClose }: AuthModalProps) {
 
               {/* OAuth Buttons */}
               <div className="space-y-4">
-                <Button_v4
-                  onClick={() => handleOAuthLogin('google')}
-                  disabled={oauthLoading !== null}
-                  className="w-full"
-                >
-                  {oauthLoading === 'google' ? (
-                    <Loader2 size={20} className="animate-spin mr-2" />
-                  ) : (
-                    <FcGoogle size={20} className="mr-2" />
-                  )}
-                  <span>Continue with Google</span>
-                </Button_v4>
+                <div className="flex gap-3 items-center justify-center">
+                  <Button_v4
+                    onClick={() => handleOAuthLogin('google')}
+                    disabled={oauthLoading !== null}
+                    size="icon"
+                    className="rounded-full h-12 w-12 flex-shrink-0"
+                    title="Continue with Google"
+                  >
+                    {oauthLoading === 'google' ? (
+                      <Loader2 size={20} className="animate-spin" />
+                    ) : (
+                      <FcGoogle size={20} />
+                    )}
+                  </Button_v4>
+
+                  <Button_v4
+                    onClick={() => handleOAuthLogin('github')}
+                    disabled={oauthLoading !== null}
+                    size="icon"
+                    className="rounded-full h-12 w-12 flex-shrink-0"
+                    title="Continue with GitHub"
+                  >
+                    {oauthLoading === 'github' ? (
+                      <Loader2 size={20} className="animate-spin" />
+                    ) : (
+                      <FaGithub size={20} />
+                    )}
+                  </Button_v4>
+                  
+                  <div className="flex-1 h-px bg-gradient-to-r from-transparent via-slate-600 to-transparent"></div>
+                </div>
 
                 <Button_v4
-                  onClick={() => handleOAuthLogin('github')}
-                  disabled={oauthLoading !== null}
+                  onClick={() => window.location.href = '/auth/signup'}
                   className="w-full"
                 >
-                  {oauthLoading === 'github' ? (
-                    <Loader2 size={20} className="animate-spin mr-2" />
-                  ) : (
-                    <FaGithub size={20} className="mr-2" />
-                  )}
-                  <span>Continue with GitHub</span>
+                  <span>Continue with Email</span>
+                  <ArrowRight size={18} className="ml-2" />
                 </Button_v4>
               </div>
 
@@ -143,16 +157,8 @@ export default function AuthModal({ isOpen = true, onClose }: AuthModalProps) {
                 <div className="flex-1 h-px bg-slate-700" />
               </div>
 
-              {/* Email/Manual Signup */}
+              {/* Signup Options */}
               <div className="space-y-3">
-                <Button_v4
-                  onClick={() => window.location.href = '/auth/signup'}
-                  className="w-full"
-                >
-                  <span>Continue with Email</span>
-                  <ArrowRight size={18} className="ml-2" />
-                </Button_v4>
-
                 <Button_v4
                   onClick={() => window.location.href = '/auth/signup?role=buyer'}
                   className="w-full"
